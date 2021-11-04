@@ -1,0 +1,34 @@
+{
+  "id": "95e0d279-e94e-4504-a5f3-8174f725fabe",
+  "name": "OPEN_UNI_FINANCE",
+  "publisher": "RCTS",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "9d652151-d535-4a7d-aec2-6c49b1303dc4",
+      "name": "Open_Uni_Dependencies",
+      "publisher": "RCTS",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50999
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://ALProject1.com/help/",
+  "showMyCode": true,
+  "runtime": "6.0",
+  "target": "OnPrem"
+}
