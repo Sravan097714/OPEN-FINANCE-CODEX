@@ -94,6 +94,7 @@ pageextension 50005 GLAccountCard extends "G/L Account Card"
             field("Created By"; "Created By") { ApplicationArea = All; }
             field("Date Created"; "Date Created") { ApplicationArea = All; }
             field("Budget Category"; "Budget Category") { ApplicationArea = all; }
+            field(Income; Rec.Income) { }
         }
 
     }

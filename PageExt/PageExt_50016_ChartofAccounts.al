@@ -57,5 +57,12 @@ pageextension 50016 ChartofAccounts extends "Chart of Accounts"
                 ApplicationArea = All;
             }
         }
+        addafter("Direct Posting")
+        {
+            field(Income; Rec.Income)
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 }

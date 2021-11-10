@@ -21,7 +21,8 @@ report 50024 "Goods and Services"
         }
         dataitem(Vendor; Vendor)
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = SORTING("No.")
+                                where("Vendor Posting Group" = filter(<> 'TUTORS'));
             RequestFilterFields = "No.";
             dataitem("Vendor Ledger Entry"; "Vendor Ledger Entry")
             {
@@ -551,11 +552,11 @@ report 50024 "Goods and Services"
         PurchCrMemoHdr: Record 124;
         PurchInvLine: Record 123;
         PurchCrMemoLine: Record 125;
-        VarDesc: Text;
+        VarDesc: Text[100];
         VarAmtExclVAT: Decimal;
         VarVATAmt: Decimal;
-        VarInvoiceNo: Text;
-        VarName: Text;
+        VarInvoiceNo: Text[100];
+        VarName: Text[100];
         VarPaidAmt: Decimal;
         Window: Dialog;
         VLEIn: Record 25;
@@ -565,7 +566,7 @@ report 50024 "Goods and Services"
         VarGrossAmtPaid: Decimal;
         VarGrossRemaingAmt: Decimal;
         VLEREMAINING: Record 380;
-        VarDesc2: Text;
+        VarDesc2: Text[250];
         //table50060: Record 50030;
         DVLE: Record 380;
         PurchCrMemoHdrr2: Record 124;

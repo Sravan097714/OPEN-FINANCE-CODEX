@@ -15,5 +15,14 @@ tableextension 50008 SalesShipHeader extends "Sales Shipment Header"
         {
             Editable = false;
         }
+        field(50026; "Amount Tendered"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50027; "Amount Returned"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
     }
 }

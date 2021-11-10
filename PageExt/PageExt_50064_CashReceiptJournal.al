@@ -107,7 +107,206 @@ pageextension 50064 CashReceiptJournal extends "Cash Receipt Journal"
                 ToolTip = 'Specifies the last number that was used from the number series.';
             }
         }
+        modify("Account No.")
+        {
+            trigger OnLookup(var Text: Text): Boolean
+            var
+                GLAccount: Record "G/L Account";
+                GLAccountList: Page "G/L Account List";
 
+                Cust: Record Customer;
+                CustList: Page "Customer List";
+
+                FixedAsset: Record "Fixed Asset";
+                FixedAssetList: Page "Fixed Asset List";
+
+                Vendor: Record Vendor;
+                VendorList: Page "Vendor Lookup";
+
+                BankAcc: Record "Bank Account";
+                BankAccList: Page "Bank Account List";
+
+                ICPartner: Record "IC Partner";
+                ICPartnerList: Page "IC Partner List";
+
+                Employee: Record Employee;
+                EmployeeList: Page "Employee List";
+            begin
+                case "Account Type" of
+                    "Account Type"::"G/L Account":
+                        begin
+                            GLAccount.Reset();
+                            GLAccount.SetRange(Income, true);
+                            GLAccountList.SetTableView(GLAccount);
+                            GLAccountList.LookupMode(true);
+                            if GLAccountList.RunModal() = Action::LookupOK then begin
+                                GLAccountList.GetRecord(GLAccount);
+                                Rec.Validate("Account No.", GLAccount."No.");
+                            end;
+                        end;
+                    "Account Type"::Customer:
+                        begin
+                            Cust.Reset();
+                            CustList.SetTableView(Cust);
+                            CustList.LookupMode(true);
+                            if CustList.RunModal() = Action::LookupOK then begin
+                                CustList.GetRecord(Cust);
+                                Rec.Validate("Account No.", Cust."No.");
+                            end;
+                        end;
+                    "Account Type"::Vendor:
+                        begin
+                            Vendor.Reset();
+                            VendorList.SetTableView(Vendor);
+                            VendorList.LookupMode(true);
+                            if VendorList.RunModal() = Action::LookupOK then begin
+                                VendorList.GetRecord(Vendor);
+                                Rec.Validate("Account No.", Vendor."No.");
+                            end;
+                        end;
+                    "Account Type"::"Bank Account":
+                        begin
+                            BankAcc.Reset();
+                            BankAccList.SetTableView(BankAcc);
+                            BankAccList.LookupMode(true);
+                            if BankAccList.RunModal() = Action::LookupOK then begin
+                                BankAccList.GetRecord(BankAcc);
+                                Rec.Validate("Account No.", BankAcc."No.");
+                            end;
+                        end;
+                    "Account Type"::"Fixed Asset":
+                        begin
+                            FixedAsset.Reset();
+                            FixedAssetList.SetTableView(FixedAsset);
+                            FixedAssetList.LookupMode(true);
+                            if FixedAssetList.RunModal() = Action::LookupOK then begin
+                                FixedAssetList.GetRecord(FixedAsset);
+                                Rec.Validate("Account No.", FixedAsset."No.");
+                            end;
+                        end;
+                    "Account Type"::"IC Partner":
+                        begin
+                            ICPartner.Reset();
+                            ICPartnerList.SetTableView(ICPartner);
+                            ICPartnerList.LookupMode(true);
+                            if ICPartnerList.RunModal() = Action::LookupOK then begin
+                                ICPartnerList.GetRecord(ICPartner);
+                                Rec.Validate("Account No.", ICPartner.Code);
+                            end;
+                        end;
+                    "Account Type"::Employee:
+                        begin
+                            Employee.Reset();
+                            EmployeeList.SetTableView(Employee);
+                            EmployeeList.LookupMode(true);
+                            if EmployeeList.RunModal() = Action::LookupOK then begin
+                                EmployeeList.GetRecord(Employee);
+                                Rec.Validate("Account No.", Employee."No.");
+                            end;
+                        end;
+                end;
+            end;
+        }
+        modify("Bal. Account No.")
+        {
+            trigger OnLookup(var Text: Text): Boolean
+            var
+                GLAccount: Record "G/L Account";
+                GLAccountList: Page "G/L Account List";
+
+                Cust: Record Customer;
+                CustList: Page "Customer List";
+
+                FixedAsset: Record "Fixed Asset";
+                FixedAssetList: Page "Fixed Asset List";
+
+                Vendor: Record Vendor;
+                VendorList: Page "Vendor Lookup";
+
+                BankAcc: Record "Bank Account";
+                BankAccList: Page "Bank Account List";
+
+                ICPartner: Record "IC Partner";
+                ICPartnerList: Page "IC Partner List";
+
+                Employee: Record Employee;
+                EmployeeList: Page "Employee List";
+            begin
+                case "Bal. Account Type" of
+                    "Bal. Account Type"::"G/L Account":
+                        begin
+                            GLAccount.Reset();
+                            GLAccount.SetRange(Income, true);
+                            GLAccountList.SetTableView(GLAccount);
+                            GLAccountList.LookupMode(true);
+                            if GLAccountList.RunModal() = Action::LookupOK then begin
+                                GLAccountList.GetRecord(GLAccount);
+                                Rec.Validate("Bal. Account No.", GLAccount."No.");
+                            end;
+                        end;
+                    "Bal. Account Type"::Customer:
+                        begin
+                            Cust.Reset();
+                            CustList.SetTableView(Cust);
+                            CustList.LookupMode(true);
+                            if CustList.RunModal() = Action::LookupOK then begin
+                                CustList.GetRecord(Cust);
+                                Rec.Validate("Bal. Account No.", Cust."No.");
+                            end;
+                        end;
+                    "Bal. Account Type"::Vendor:
+                        begin
+                            Vendor.Reset();
+                            VendorList.SetTableView(Vendor);
+                            VendorList.LookupMode(true);
+                            if VendorList.RunModal() = Action::LookupOK then begin
+                                VendorList.GetRecord(Vendor);
+                                Rec.Validate("Bal. Account No.", Vendor."No.");
+                            end;
+                        end;
+                    "Bal. Account Type"::"Bank Account":
+                        begin
+                            BankAcc.Reset();
+                            BankAccList.SetTableView(BankAcc);
+                            BankAccList.LookupMode(true);
+                            if BankAccList.RunModal() = Action::LookupOK then begin
+                                BankAccList.GetRecord(BankAcc);
+                                Rec.Validate("Bal. Account No.", BankAcc."No.");
+                            end;
+                        end;
+                    "Bal. Account Type"::"Fixed Asset":
+                        begin
+                            FixedAsset.Reset();
+                            FixedAssetList.SetTableView(FixedAsset);
+                            FixedAssetList.LookupMode(true);
+                            if FixedAssetList.RunModal() = Action::LookupOK then begin
+                                FixedAssetList.GetRecord(FixedAsset);
+                                Rec.Validate("Bal. Account No.", FixedAsset."No.");
+                            end;
+                        end;
+                    "Bal. Account Type"::"IC Partner":
+                        begin
+                            ICPartner.Reset();
+                            ICPartnerList.SetTableView(ICPartner);
+                            ICPartnerList.LookupMode(true);
+                            if ICPartnerList.RunModal() = Action::LookupOK then begin
+                                ICPartnerList.GetRecord(ICPartner);
+                                Rec.Validate("Bal. Account No.", ICPartner.Code);
+                            end;
+                        end;
+                    "Bal. Account Type"::Employee:
+                        begin
+                            Employee.Reset();
+                            EmployeeList.SetTableView(Employee);
+                            EmployeeList.LookupMode(true);
+                            if EmployeeList.RunModal() = Action::LookupOK then begin
+                                EmployeeList.GetRecord(Employee);
+                                Rec.Validate("Bal. Account No.", Employee."No.");
+                            end;
+                        end;
+                end;
+            end;
+        }
     }
 
     actions

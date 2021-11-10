@@ -30,6 +30,7 @@ page 50045 "Bank Standing Order"
                         field(City; City) { ApplicationArea = All; }
                         field(Country; Country) { ApplicationArea = All; }
                         field("National Identity No."; "National Identity No.") { ApplicationArea = All; }
+                        field("Invoice Number"; "Invoice Number") { ApplicationArea = all; }
                     }
                 }
             }
@@ -114,7 +115,7 @@ page 50045 "Bank Standing Order"
                     group("        ")
                     {
                         field("Name of Bank"; "Name of Bank") { ApplicationArea = All; }
-                        field("Address "; "Address 2") { ApplicationArea = All; }
+                        field("Address "; "Address 2") { ApplicationArea = All; Caption = 'Branch/ Head Office'; }
                         field("Current_Savings Account no."; "Current_Savings Account no.") { ApplicationArea = All; }
                         field("Instalment amount to Debit"; "Instalment amount to Debit") { ApplicationArea = All; }
                         field("From Month"; "From Month") { ApplicationArea = All; }
@@ -143,7 +144,7 @@ page 50045 "Bank Standing Order"
     {
         area(Processing)
         {
-            action("Print BANK STANDING ORDER FORM")
+            action("Print Learner Copy")
             {
                 ApplicationArea = All;
                 Promoted = true;
@@ -152,12 +153,16 @@ page 50045 "Bank Standing Order"
                 Image = BankContact;
 
                 trigger OnAction()
+                var
+                    Bankstandingorderrec: Record "Bank Standing Orders";
                 begin
-                    Report.Run(50087, true, true, Rec);
+                    Bankstandingorderrec.Reset();
+                    Bankstandingorderrec.SetRange("Bank Standing Order No.", Rec."Bank Standing Order No.");
+                    Report.Run(50087, true, false, Bankstandingorderrec);
                 end;
             }
 
-            action("Print FORM 3")
+            action("Print Finance Copy")
             {
                 ApplicationArea = All;
                 Promoted = true;
@@ -166,8 +171,29 @@ page 50045 "Bank Standing Order"
                 Image = Form;
 
                 trigger OnAction()
+                var
+                    Bankstandingorderrec: Record "Bank Standing Orders";
                 begin
-                    Report.Run(50086, true, true, Rec);
+                    Bankstandingorderrec.Reset();
+                    Bankstandingorderrec.SetRange("Bank Standing Order No.", Rec."Bank Standing Order No.");
+                    Report.Run(50086, true, false, Bankstandingorderrec);
+                end;
+            }
+            action("Print Bank Copy")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Form;
+
+                trigger OnAction()
+                var
+                    Bankstandingorderrec: Record "Bank Standing Orders";
+                begin
+                    Bankstandingorderrec.Reset();
+                    Bankstandingorderrec.SetRange("Bank Standing Order No.", Rec."Bank Standing Order No.");
+                    Report.Run(50099, true, false, Bankstandingorderrec);
                 end;
             }
         }

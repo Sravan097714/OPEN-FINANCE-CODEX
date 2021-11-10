@@ -46,8 +46,14 @@ table 50018 "Bank Standing Orders"
             //TableRelation = "Dimension Value".Name where("Dimension Code" = filter('Intake'));
         }
 
-        field(8; Year; Text[10]) { }
-        field(9; Semester; Text[10]) { }
+        field(8; Year; Option)
+        {
+            OptionMembers = "1","2","3","4","5","6","7";
+        }
+        field(9; Semester; Option)
+        {
+            OptionMembers = "1","2";
+        }
         field(10; "No. of Module"; text[2]) { }
 
         field(11; "Total Fee per Installment"; Decimal) { }
@@ -56,8 +62,14 @@ table 50018 "Bank Standing Orders"
             TableRelation = Currency;
         }
 
-        field(13; "Name of Bank"; Text[50]) { }
-        field(14; "Address 2"; Text[50]) { }
+        field(13; "Name of Bank"; Option)
+        {
+            OptionMembers = "ABC BANKING CORPORATION LTD","ABSA BANK (MAURITIUS) LIMITED","AfrAsia BANK LIMITED","BANK OF MAURITIUS LTD","BANK OF BARODA","BANK ONE LIMITED","BCP BANK (MAURITIUS)","BANYAN TREE BANK LTD","DEVELOPMENT BANK OF MAURITIUS","HABIB BANK LIMITED","HONGKONG AND SHANGHAI BANKING CORPORATION LIMITED - MAURITIUS","MauBank LTD","STATE BANK OF MAURITIUS LTD","STANDARD BANK MAURITIUS LTD","THE MAURITIUS COMMERCIAL BANK LIMITED";
+        }
+        field(14; "Address 2"; Option)
+        {
+            OptionMembers = " ","Port Louis","Ebene","ROSE HILL";
+        }
         field(15; "Current_Savings Account no."; Text[20])
         {
             Caption = 'Student Current / Savings Account No.';
@@ -87,6 +99,17 @@ table 50018 "Bank Standing Orders"
         field(25; "Address 1"; Text[50]) { }
         field(26; Date; Date) { }
         field(27; "Created By"; Text[100]) { Editable = false; }
+        field(28; "Invoice Number"; Code[20])
+        {
+            trigger OnLookup()
+            var
+                salesinvheaderrec: Record "Sales Invoice Header";
+            begin
+                if Page.RunModal(Page::"Posted Sales Invoices", salesinvheaderrec) = Action::LookupOK then
+                    "Invoice Number" := salesinvheaderrec."No.";
+            end;
+        }
+
 
     }
 

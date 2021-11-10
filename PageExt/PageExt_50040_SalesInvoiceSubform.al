@@ -144,6 +144,7 @@ pageextension 50040 SalesInvoiceSubformExt extends "Sales Invoice Subform"
                         begin
                             grecGLAccount.Reset();
                             grecGLAccount.SetRange("No.");
+                            grecGLAccount.SetRange(Income, true);
                             if grecGLAccount.FindFirst() then begin
                                 gpageGLAccount.SetRecord(grecGLAccount);
                                 gpageGLAccount.SetTableView(grecGLAccount);

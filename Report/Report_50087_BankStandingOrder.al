@@ -1,4 +1,4 @@
-report 50087 "Bank Standing Order"
+report 50087 "Print Learner Copy"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -11,7 +11,7 @@ report 50087 "Bank Standing Order"
         {
             column(Date; Date) { }
             column(Name_of_Bank; "Name of Bank") { }
-            column(Address_2; "Address 2") { }
+            column(Address_2; Address) { }
             column(Current_Savings_Account_no_; "Current_Savings Account no.") { }
             column(Total_Fee_for_Installments; "Total Fee for Installments") { }
             column(From_Month; "From Month") { }

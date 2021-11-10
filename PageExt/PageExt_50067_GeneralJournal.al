@@ -114,6 +114,13 @@ pageextension 50067 GeneralJournal extends "General Journal"
             Visible = false;
             ApplicationArea = All;
         }
+        addafter(Description)
+        {
+            field("Description 2"; "Description 2")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         addfirst(Control1)
         {

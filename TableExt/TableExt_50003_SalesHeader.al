@@ -58,6 +58,22 @@ tableextension 50003 SalesHeaderExt extends "Sales Header"
         field(50023; "Payment Date"; Date) { }
         field(50024; "MyT Merchant Trade No."; Text[20]) { }
         field(50025; Remark; Text[250]) { }
+        field(50026; "Amount Tendered"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            trigger OnValidate()
+            begin
+                CalcFields(Amount);
+                if "Amount Tendered" < Amount then
+                    Error('Amount Tendered cannot be less than total amount');
+                "Amount Returned" := "Amount Tendered" - Amount;
+            end;
+        }
+        field(50027; "Amount Returned"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
     }
 
     trigger OnInsert()

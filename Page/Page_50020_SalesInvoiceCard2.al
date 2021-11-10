@@ -303,6 +303,9 @@ page 50020 "Sales Invoice OU Portal"
                 field("Payment Amount"; "Payment Amount") { ApplicationArea = All; }
                 field("Payment Date"; "Payment Date") { ApplicationArea = All; }
                 field(Remark; Remark) { ApplicationArea = All; }
+                field(Amount; Amount) { ApplicationArea = all; }
+                field("Amount Tendered"; Rec."Amount Tendered") { ApplicationArea = all; }
+                field("Amount Returned"; Rec."Amount Returned") { ApplicationArea = all; }
 
 
                 group("Work Description")

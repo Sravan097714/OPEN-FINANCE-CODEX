@@ -184,6 +184,9 @@ pageextension 50039 SalesInvoiceCardExt extends "Sales Invoice"
             }
             field("Our Ref"; "Our Ref") { ApplicationArea = All; }
             field("Your Ref"; "Your Ref") { ApplicationArea = All; }
+            field("Amount Tendered"; Rec."Amount Tendered") { ApplicationArea = all; }
+            field("Amount Returned"; Rec."Amount Returned") { ApplicationArea = all; }
+
         }
         moveafter("Sell-to Address 2"; "Sell-to Contact")
     }

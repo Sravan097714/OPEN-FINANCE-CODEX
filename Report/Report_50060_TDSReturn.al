@@ -62,10 +62,14 @@ report 50060 "TDS Return Finance"
                         PurchInvLine.Reset();
                         PurchInvLine.SetRange("Document No.", PurchInvHdr."No.");
                         PurchInvLine.SetFilter(Amount, '>%1', 0);
-                        if PurchInvLine.FindSet() then begin
-                            PurchInvLine.CalcSums(PurchInvLine."Line Amount Excluding VAT");
-                            EmolumentAmtGVar += Abs(Round(PurchInvLine."Line Amount Excluding VAT", 1, '='));
-                        end;
+                        if PurchInvLine.FindSet() then
+                            repeat
+                                if not PurchInvLine.VAT then
+                                    EmolumentAmtGVar += Abs(Round(PurchInvLine."Line Amount", 1, '='))
+                                else
+                                    EmolumentAmtGVar += Abs(Round(PurchInvLine."Line Amount Excluding VAT", 1, '='));
+                            until PurchInvLine.Next() = 0;
+
                         PurchInvLine.Reset();
                         PurchInvLine.SetRange("Document No.", PurchInvHdr."No.");
                         PurchInvLine.SetRange(Type, PurchInvLine.Type::"G/L Account");

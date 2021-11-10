@@ -58,5 +58,15 @@ tableextension 50004 SalesInvoiceHeaderExt extends "Sales Invoice Header"
         field(50023; "Payment Date"; Date) { }
         field(50024; "MyT Merchant Trade No."; Text[20]) { }
         field(50025; Remark; Text[250]) { }
+        field(50026; "Amount Tendered"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+
+        }
+        field(50027; "Amount Returned"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
     }
 }

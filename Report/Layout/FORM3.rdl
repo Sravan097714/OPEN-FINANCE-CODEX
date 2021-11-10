@@ -40,7 +40,9 @@
                                 </TextRun>
                                 <TextRun>
                                   <Value>=First(Fields!Full_Name_of_Applicant.Value, "DataSet_Result")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -78,7 +80,9 @@
                                 </TextRun>
                                 <TextRun>
                                   <Value>=First(Fields!Address.Value, "DataSet_Result") +" " + First(Fields!City.Value, "DataSet_Result") +" "+ First(Fields!Country.Value, "DataSet_Result")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1375,7 +1379,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>FORM 3</Value>
+                      <Value>FINANCE COPY</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1385,9 +1389,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox8</rd:DefaultName>
-              <Left>6.38417in</Left>
+              <Left>6.25084in</Left>
               <Height>0.25in</Height>
-              <Width>1in</Width>
+              <Width>1.13333in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

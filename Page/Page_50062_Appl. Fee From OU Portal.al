@@ -9,7 +9,7 @@ page 50062 "Appl. Fee From OU Portal"
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(GroupName)
             {
                 field(Select; Rec.Select) { ApplicationArea = All; }
                 field("Line No."; Rec."Line No.") { ApplicationArea = All; }

@@ -19,5 +19,9 @@ tableextension 50033 GLAccountExt extends "G/L Account"
         {
             TableRelation = "Budget Category"."Budget Category Code";
         }
+        field(50008; Income; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 }

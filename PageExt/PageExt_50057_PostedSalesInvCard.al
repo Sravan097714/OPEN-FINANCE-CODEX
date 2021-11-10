@@ -178,6 +178,8 @@ pageextension 50057 PostedSalesInvCardExt extends "Posted Sales Invoice"
             field("Payment Amount"; "Payment Amount") { ApplicationArea = All; }
             field("Payment Date"; "Payment Date") { ApplicationArea = All; }
             field(Remark; Remark) { ApplicationArea = All; }
+            field("Amount Tendered"; Rec."Amount Tendered") { ApplicationArea = all; }
+            field("Amount Returned"; Rec."Amount Returned") { ApplicationArea = all; }
         }
     }
 

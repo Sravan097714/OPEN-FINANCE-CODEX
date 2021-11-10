@@ -4,7 +4,7 @@ pageextension 50004 GLAccountList extends "G/L Account List"
     {
         modify("Account Category")
         {
-            Visible = true;
+            Visible = false;
             Editable = false;
         }
         modify("Reconciliation Account")
@@ -15,15 +15,30 @@ pageextension 50004 GLAccountList extends "G/L Account List"
         {
             Visible = false;
         }
+        modify("Gen. Bus. Posting Group")
+        {
+            Visible = false;
+        }
+        modify("Gen. Prod. Posting Group")
+        {
+            Visible = false;
+        }
+        modify("Gen. Posting Type")
+        {
+            Visible = false;
+        }
+
         addlast(Control1)
         {
             field("FA Acquisition"; "FA Acquisition")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("FA Acquisition 2"; "FA Acquisition 2")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Budget Category"; "Budget Category") { ApplicationArea = All; }
         }

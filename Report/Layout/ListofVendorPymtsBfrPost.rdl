@@ -19,22 +19,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.125in</Width>
+                  <Width>1.08867in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.54675in</Width>
+                  <Width>1.42175in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.77617in</Width>
+                  <Width>1.47409in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.21875in</Width>
+                  <Width>1.07292in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.93217in</Width>
+                  <Width>1.88009in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.25508in</Width>
+                  <Width>1.16133in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.2655in</Width>
@@ -606,7 +606,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -639,7 +639,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1079,7 +1079,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.09375in</Top>
             <Height>1.34408in</Height>
-            <Width>11.91642in</Width>
+            <Width>11.16135in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1490,7 +1490,7 @@
         <Height>8.47286cm</Height>
         <Style />
       </Body>
-      <Width>30.26773cm</Width>
+      <Width>28.34982cm</Width>
       <Page>
         <PageHeader>
           <Height>4.96605cm</Height>
@@ -1518,7 +1518,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Height>0.5025in</Height>
-              <Width>11.91643in</Width>
+              <Width>11.16135in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1552,7 +1552,7 @@
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.52166in</Top>
               <Height>0.27333in</Height>
-              <Width>11.91643in</Width>
+              <Width>11.16135in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1587,7 +1587,7 @@
               <Top>1.26514in</Top>
               <Left>3.7655in</Left>
               <Height>0.25125in</Height>
-              <Width>8.15093in</Width>
+              <Width>7.39585in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1619,7 +1619,7 @@
               <Top>0.99444in</Top>
               <Left>3.7655in</Left>
               <Height>0.25125in</Height>
-              <Width>8.15093in</Width>
+              <Width>7.39585in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1674,9 +1674,12 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
