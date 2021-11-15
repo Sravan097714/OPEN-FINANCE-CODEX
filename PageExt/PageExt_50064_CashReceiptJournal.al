@@ -307,11 +307,26 @@ pageextension 50064 CashReceiptJournal extends "Cash Receipt Journal"
                 end;
             end;
         }
+        addbefore(Amount)
+        {
+            field("Amount Tendered"; "Amount Tendered")
+            {
+                ApplicationArea = all;
+            }
+        }
+        addafter(Amount)
+        {
+            field("Amount to Remit"; "Amount to Remit")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
     }
 
     actions
     {
-        /* addlast(processing)
+        addlast(processing)
         {
             action("Upload list of payments")
             {
@@ -325,10 +340,11 @@ pageextension 50064 CashReceiptJournal extends "Cash Receipt Journal"
                 var
                     gpageListofUploadedPayments: Page "List of Uploaded Payments";
                 begin
+                    gpageListofUploadedPayments.SetJournal(Rec."Journal Template Name", Rec."Journal Batch Name");
                     gpageListofUploadedPayments.Run();
                 end;
             }
-        } */
+        }
     }
     local procedure GetLastUsedPostedNo(): Code[20]
     var

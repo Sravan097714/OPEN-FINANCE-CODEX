@@ -299,7 +299,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=IIF(Fields!CurrencyCode_SalesInvoiceHeader.Value="MUR",Fields!Quantity_SalesInvoiceLine.Value,"")</Value>
+                                                    <Value>=Code.BlankZero(IIF(Fields!CurrencyCode_SalesInvoiceHeader.Value="MUR",Fields!Quantity_SalesInvoiceLine.Value,""))</Value>
                                                     <Style />
                                                   </TextRun>
                                                 </TextRuns>
@@ -331,7 +331,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=IIF(Fields!CurrencyCode_SalesInvoiceHeader.Value="MUR",Fields!UnitPrice_SalesInvoiceLine.Value,"")</Value>
+                                                    <Value>=Code.BlankZero(IIF(Fields!CurrencyCode_SalesInvoiceHeader.Value="MUR",Fields!UnitPrice_SalesInvoiceLine.Value,""))</Value>
                                                     <Style>
                                                       <Format>#,0.00;(#,0.00);''</Format>
                                                     </Style>
@@ -365,7 +365,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!AmountIncludingVAT_SalesInvoiceLine.Value</Value>
+                                                    <Value>=Code.BlankZero(Fields!AmountIncludingVAT_SalesInvoiceLine.Value)</Value>
                                                     <Style>
                                                       <Format>#,0.00;-#,0.00;''</Format>
                                                     </Style>

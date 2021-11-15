@@ -166,13 +166,29 @@ report 50024 "Goods and Services"
 
                                             IF PurchInvHdr.GET(VLE."Document No.") THEN BEGIN
                                                 PurchInvHdr.CALCFIELDS(PurchInvHdr.Amount, PurchInvHdr."Amount Including VAT");
-                                                VarAmtExclVAT := ROUND(PurchInvHdr.Amount, 1, '=');
-                                                VarVATAmt := ROUND(PurchInvHdr."Amount Including VAT" - PurchInvHdr.Amount, 1, '=');
+
+                                                PurchInvLine.Reset();
+                                                PurchInvLine.SetRange("Document No.", VLE."Document No.");
+                                                PurchInvLine.SetFilter(Quantity, '>%1', 0);
+                                                if PurchInvLine.FindSet() then
+                                                    PurchInvLine.CalcSums("Amount Including VAT", "Line Amount Excluding VAT", "VAT Amount Input", "Line Amount");
+
+                                                if PurchInvLine."Line Amount Excluding VAT" <> 0 then begin
+                                                    VarAmtExclVAT := ROUND(PurchInvLine."Line Amount Excluding VAT", 1, '=');
+                                                    VarVATAmt := ROUND(PurchInvLine."VAT Amount Input", 1, '=');
+                                                end else begin
+                                                    VarAmtExclVAT := ROUND(PurchInvLine."Amount Including VAT", 1, '=');
+                                                    VarVATAmt := ROUND(PurchInvLine."Amount Including VAT" - PurchInvLine."Line Amount", 1, '=');
+                                                end;
+
+                                                //VarAmtExclVAT := ROUND(PurchInvHdr.Amount, 1, '=');
+
+                                                //VarVATAmt := ROUND(PurchInvHdr."Amount Including VAT" - PurchInvHdr.Amount, 1, '=');
                                                 VarDesc := DELCHR(PurchInvHdr."Posting Description");
                                                 //VarDesc := PurchInvHdr."Posting Description";
                                                 IF PurchInvHdr."Currency Code" <> '' THEN BEGIN
-                                                    VarAmtExclVAT := PurchInvHdr.Amount;
-                                                    VarVATAmt := PurchInvHdr."Amount Including VAT" - PurchInvHdr.Amount;
+                                                    //VarAmtExclVAT := PurchInvHdr.Amount;
+                                                    //VarVATAmt := PurchInvHdr."Amount Including VAT" - PurchInvHdr.Amount;
                                                     VarAmtExclVAT := ROUND(VarAmtExclVAT / PurchInvHdr."Currency Factor", 1, '=');
                                                     VarVATAmt := ROUND(VarVATAmt / PurchInvHdr."Currency Factor", 1, '=');
                                                 END;
@@ -214,7 +230,7 @@ report 50024 "Goods and Services"
                                         END;
 
                                     VLE."Document Type"::Payment,
-                                    VLE."Document Type"::" ":
+                            VLE."Document Type"::" ":
                                         BEGIN
                                             VLE.CALCFIELDS(VLE."Amount (LCY)");
                                             VarDesc := DELCHR(VLE.Description);

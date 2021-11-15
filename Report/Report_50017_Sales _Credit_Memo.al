@@ -22,6 +22,8 @@ report 50017 "Sales Credit Memo"
             column(gtextVATREGNo; gtextVATREGNo) { }
             column(Our_Ref; "Our Ref") { }
             column(Your_Ref; "Your Ref") { }
+            column(Pre_Assigned_No_; "Pre-Assigned No.") { }
+            column(User_ID; "User ID") { }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);

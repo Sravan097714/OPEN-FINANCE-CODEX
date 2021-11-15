@@ -122,5 +122,19 @@ pageextension 50075 BankAccLedgerEntries extends "Bank Account Ledger Entries"
                 Editable = false;
             }
         }
+        addbefore(Amount)
+        {
+            field("Amount Tendered"; "Amount Tendered")
+            {
+                ApplicationArea = all;
+            }
+        }
+        addafter(Amount)
+        {
+            field("Amount to Remit"; "Amount to Remit")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 }

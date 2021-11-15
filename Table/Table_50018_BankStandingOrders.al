@@ -109,6 +109,10 @@ table 50018 "Bank Standing Orders"
                     "Invoice Number" := salesinvheaderrec."No.";
             end;
         }
+        field(29; "Archived"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
 
 
     }

@@ -18,7 +18,7 @@ page 50030 "Uploads from OU Portal"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"Appl. Fee From OU Portal");
+                    Report.Run(50031);
                 end;
             }
 

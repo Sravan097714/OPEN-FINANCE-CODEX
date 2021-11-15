@@ -4,7 +4,7 @@ pageextension 50067 GeneralJournal extends "General Journal"
     {
         modify("Document Type")
         {
-            Visible = false;
+            Visible = true;
         }
         modify(Quantity)
         {
@@ -138,5 +138,28 @@ pageextension 50067 GeneralJournal extends "General Journal"
             }
         }
 
+    }
+    actions
+    {
+        addafter("Request Approval")
+        {
+            action("Import Entries")
+            {
+                ApplicationArea = All;
+                Caption = 'Import Entries';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = Import;
+                ToolTip = 'Import journal from desktop';
+
+                trigger OnAction()
+                var
+                    GenImportData: Codeunit "Import Files";
+                begin
+                    GenImportData.SetJournalTemplateBatch(Rec."Journal Template Name", Rec."Journal Batch Name");
+                    GenImportData.ImportGenJnlFile();
+                end;
+            }
+        }
     }
 }

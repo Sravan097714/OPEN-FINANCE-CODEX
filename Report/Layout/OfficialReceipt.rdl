@@ -560,14 +560,14 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox55">
+                                          <Textbox Name="Textbox34">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>TOTAL APPLIED</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -577,7 +577,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox55</rd:DefaultName>
+                                            <rd:DefaultName>Textbox34</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -594,14 +594,14 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox56">
+                                          <Textbox Name="Textbox49">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -611,7 +611,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox56</rd:DefaultName>
+                                            <rd:DefaultName>Textbox49</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -628,17 +628,16 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="AppliedAmt_">
+                                          <Textbox Name="Textbox50">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Sum(Fields!Amount_DCLE.Value)</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
-                                                      <Format>#,0.00</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -647,7 +646,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>AppliedAmt_</rd:DefaultName>
+                                            <rd:DefaultName>Textbox50</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -678,7 +677,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>UNAPPLIED AMOUNT</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -716,7 +715,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -743,17 +742,16 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="UnAppliedAmt_">
+                                          <Textbox Name="Textbox54">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Sum(Fields!UnAppliedAmt.Value)</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
-                                                      <Format>#,0.00</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -762,7 +760,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>UnAppliedAmt_</rd:DefaultName>
+                                            <rd:DefaultName>Textbox54</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2080,7 +2078,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Document No.</Value>
+                                                    <Value>Invoice No.</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2156,7 +2154,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Date</Value>
+                                                    <Value>Invoice Date</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2310,14 +2308,14 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox39">
+                                          <Textbox Name="Textbox55">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>APPLIED :</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2327,7 +2325,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox39</rd:DefaultName>
+                                            <rd:DefaultName>Textbox55</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -2906,6 +2904,9 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Left>0.09602in</Left>
               <Height>0.19791in</Height>
               <Width>6.88541in</Width>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2986,7 +2987,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant">DOCUMENT NO</Value>
+                      <Value>Receipt NO</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3347,6 +3348,9 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Height>2.39304cm</Height>
               <Width>4.88851cm</Width>
               <ZIndex>14</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <DataElementOutput>NoOutput</DataElementOutput>
               <Style>
                 <Border />
@@ -3359,7 +3363,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CLIENT CODE</Value>
+                      <Value>Customer CODE</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3375,9 +3379,6 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Height>0.1875in</Height>
               <Width>1.08667in</Width>
               <ZIndex>15</ZIndex>
-              <Visibility>
-                <Hidden>=IIF(LEN(ReportItems!Textbox26.value)=0,TRUE,FALSE)</Hidden>
-              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3411,107 +3412,6 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Height>0.1875in</Height>
               <Width>0.08667in</Width>
               <ZIndex>16</ZIndex>
-              <Visibility>
-                <Hidden>=IIF(LEN(ReportItems!Textbox26.value)=0,TRUE,FALSE)</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox61">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(31,1)</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.84685in</Top>
-              <Left>5.55456in</Left>
-              <Height>0.1875in</Height>
-              <Width>1.50695in</Width>
-              <ZIndex>17</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox62">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>CURRENCY</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.84685in</Top>
-              <Left>4.36733in</Left>
-              <Height>0.1875in</Height>
-              <Width>1.08667in</Width>
-              <ZIndex>18</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox63">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>:</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.84685in</Top>
-              <Left>5.454in</Left>
-              <Height>0.1875in</Height>
-              <Width>0.08667in</Width>
-              <ZIndex>19</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3545,7 +3445,10 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Left>0.09414in</Left>
               <Height>0.19791in</Height>
               <Width>6.88541in</Width>
-              <ZIndex>20</ZIndex>
+              <ZIndex>17</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3579,7 +3482,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Left>0.40025cm</Left>
               <Height>0.81167cm</Height>
               <Width>0.91599cm</Width>
-              <ZIndex>21</ZIndex>
+              <ZIndex>18</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -3616,7 +3519,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Left>0.24389cm</Left>
               <Height>0.74112cm</Height>
               <Width>17.48894cm</Width>
-              <ZIndex>22</ZIndex>
+              <ZIndex>19</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3652,9 +3555,9 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
               <Left>0.29152cm</Left>
               <Height>0.6cm</Height>
               <Width>17.43654cm</Width>
-              <ZIndex>23</ZIndex>
+              <ZIndex>20</ZIndex>
               <Visibility>
-                <Hidden>=iif(First(Fields!CompInfo_IncTitle.Value, "DataSet_Result") = true,False,true)</Hidden>
+                <Hidden>true</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -3687,11 +3590,11 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.04824in</Top>
+              <Top>1.84824in</Top>
               <Left>5.54898in</Left>
               <Height>0.1875in</Height>
               <Width>1.51253in</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3708,7 +3611,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant">DOCUMENT DATE</Value>
+                      <Value>DATE</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3719,11 +3622,11 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.04824in</Top>
+              <Top>1.84824in</Top>
               <Left>4.36175in</Left>
               <Height>0.1875in</Height>
               <Width>1.08667in</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>22</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3752,11 +3655,11 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.04824in</Top>
+              <Top>1.84824in</Top>
               <Left>5.44842in</Left>
               <Height>0.1875in</Height>
               <Width>0.08667in</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>

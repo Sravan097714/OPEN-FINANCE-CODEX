@@ -8,7 +8,7 @@ table 50005 "List of Uploaded Payments"
         field(2; "Posting Date"; Date) { }
         field(3; "Student Code"; Text[50]) { }
         field(4; Amount; Decimal) { }
-        field(5; "Voucher No."; Text[50]) { }
+        field(5; "Posted Invoice No."; Code[20]) { }
         field(6; Error; Boolean)
         {
             Editable = false;
@@ -38,6 +38,10 @@ table 50005 "List of Uploaded Payments"
             Editable = false;
         }
         field(13; Name; Text[100])
+        {
+            Editable = false;
+        }
+        field(14; "Updated to NAV"; Boolean)
         {
             Editable = false;
         }

@@ -61,5 +61,13 @@ tableextension 50022 BankAccLedgerEntryExt extends "Bank Account Ledger Entry"
         {
             Caption = 'Payee Name';
         }
+        field(50035; "Amount Tendered"; Decimal)
+        {
+            Caption = 'Amount Tendered';
+        }
+        field(50036; "Amount to Remit"; Decimal)
+        {
+            Caption = 'Amount to Remit';
+        }
     }
 }

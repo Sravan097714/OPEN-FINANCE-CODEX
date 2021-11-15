@@ -25,6 +25,9 @@ report 50092 "Import Application Submission"
     begin
         gintCounter := 0;
         grecOUPortalAppSubmission.DeleteAll();
+        if not GuiAllowed then begin
+
+        end;
         ExcelBuf.LOCKTABLE;
         ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;

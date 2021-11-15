@@ -1565,6 +1565,20 @@ page 50020 "Sales Invoice OU Portal"
                         ReportPrint.PrintSalesHeader(Rec);
                     end;
                 }
+                action("Load G/L Entries")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Load G/L Entries before Test Report';
+                    Image = GetEntries;
+
+                    trigger OnAction()
+                    var
+                        PreviewPostingCU: Codeunit 50012;
+                    begin
+                        PreviewPostingCU.RunPreviewPostingInTheBackground(Rec);
+                    end;
+                }
+
                 action("Remove From Job Queue")
                 {
                     ApplicationArea = Basic, Suite;
@@ -1699,6 +1713,7 @@ page 50020 "Sales Invoice OU Portal"
         ChangeExchangeRate: Page "Change Exchange Rate";
         WorkDescription: Text;
         [InDataSet]
+
         StatusStyleTxt: Text;
         HasIncomingDocument: Boolean;
         DocNoVisible: Boolean;

@@ -4,6 +4,7 @@ page 50013 "List of Uploaded Payments"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "List of Uploaded Payments";
+    SourceTableView = where("Updated To Nav" = const(false));
 
     layout
     {
@@ -18,7 +19,7 @@ page 50013 "List of Uploaded Payments"
                 field("Last Name"; "Last Name") { }
                 field(Name; Name) { ApplicationArea = All; }
                 field(Amount; Amount) { ApplicationArea = All; }
-                field("Voucher No."; "Voucher No.") { ApplicationArea = All; }
+                field("Posted Invoice No."; "Posted Invoice No.") { ApplicationArea = All; }
                 field(Error; Error) { ApplicationArea = All; }
                 field("Error Message"; "Error Message") { ApplicationArea = All; }
                 field(Validated; Validated) { ApplicationArea = All; }
@@ -64,6 +65,7 @@ page 50013 "List of Uploaded Payments"
                     grecUploadedPayments.Reset();
                     grecUploadedPayments.SetCurrentKey("Entry No.");
                     grecUploadedPayments.SetRange("Entry No.");
+                    grecUploadedPayments.SetRange(Validated, false);
                     if grecUploadedPayments.FindFirst() then begin
                         repeat
                             if not grecCustomer.get(grecUploadedPayments."Student Code") then begin
@@ -80,7 +82,7 @@ page 50013 "List of Uploaded Payments"
                                 grecCustLdgEntry.SetCurrentKey("Entry No.");
                                 grecCustLdgEntry.SetRange("Customer No.", grecUploadedPayments."Student Code");
                                 grecCustLdgEntry.SetRange(Amount, grecUploadedPayments.Amount);
-                                grecCustLdgEntry.SetRange("Document No.", grecUploadedPayments."Voucher No.");
+                                grecCustLdgEntry.SetRange("Document No.", grecUploadedPayments."Posted Invoice No.");
                                 if not grecCustLdgEntry.FindFirst() then begin
                                     grecUploadedPayments.Error := true;
                                     grecUploadedPayments."Error Message" := 'The combination of student with this voucher no. and amount does not exist on the system.';
@@ -118,38 +120,37 @@ page 50013 "List of Uploaded Payments"
                     gintCountEntry: Integer;
                     grecGenJnlBatch: Record "Gen. Journal Batch";
                 begin
+
+                    clear(gintCountEntry);
+                    grecGenJnlLine2.Reset();
+                    grecGenJnlLine2.SetRange("Journal Template Name", JournalTemplateName);
+                    grecGenJnlLine2.SetRange("Journal Batch Name", JournalBatchName);
+                    if grecGenJnlLine2.Findlast then
+                        gintEntryNo += grecGenJnlLine2."Line No." + 10000
+                    else
+                        gintEntryNo := 10000;
+
+                    grecSalesReceivableSetup.Get();
+
                     grecUploadedPayments.Reset();
                     grecUploadedPayments.SetCurrentKey("Entry No.");
                     grecUploadedPayments.SetRange(Validated, true);
+                    grecUploadedPayments.SetRange("Updated to NAV", false);
                     if grecUploadedPayments.FindFirst() then begin
-                        grecSalesReceivableSetup.Get();
-
-                        clear(gintCountEntry);
-                        grecGenJnlLine2.Reset();
-                        grecGenJnlLine2.SetRange("Journal Template Name", 'CASH RECE');
-                        grecGenJnlLine2.SetRange("Journal Batch Name", grecSalesReceivableSetup."Upload Customer Payments");
-                        if grecGenJnlLine2.Findlast then
-                            gintEntryNo += grecGenJnlLine2."Line No." + 10000
-                        else
-                            gintEntryNo := 10000;
-
                         repeat
                             clear(gtextDocNo);
                             grecGenJnlLine.Init();
                             grecGenJnlLine.validate("Line No.", gintEntryNo);
-                            grecGenJnlLine.validate("Journal Template Name", 'CASH RECE');
-                            grecGenJnlLine.validate("Journal Batch Name", grecSalesReceivableSetup."Upload Customer Payments");
+                            grecGenJnlLine.validate("Journal Template Name", JournalTemplateName);
+                            grecGenJnlLine.validate("Journal Batch Name", JournalBatchName);
                             grecGenJnlLine.validate("Account Type", grecGenJnlLine."Account Type"::Customer);
                             grecGenJnlLine.validate("Account No.", grecUploadedPayments."Student Code");
                             grecGenJnlLine.validate("Posting Date", grecUploadedPayments."Posting Date");
                             grecGenJnlLine.validate("Document Type", grecGenJnlLine."Document Type"::Payment);
-                            grecGenJnlLine.validate("Document No.", grecUploadedPayments."Voucher No.");
+                            grecGenJnlLine.validate("Document No.", grecUploadedPayments."Posted Invoice No.");
                             grecGenJnlLine.validate(Amount, grecUploadedPayments.Amount * -1);
 
-                            grecGenJnlBatch.Reset();
-                            grecGenJnlBatch.SetRange("Journal Template Name", 'CASH RECE');
-                            grecGenJnlBatch.SetRange(Name, grecSalesReceivableSetup."Upload Customer Payments");
-                            if grecGenJnlBatch.FindFirst() then begin
+                            if grecGenJnlBatch.Get(JournalTemplateName, JournalBatchName) then begin
                                 grecGenJnlLine."Bal. Account Type" := grecGenJnlBatch."Bal. Account Type";
                                 grecGenJnlLine."Bal. Account No." := grecGenJnlBatch."Bal. Account No.";
                             end;
@@ -161,16 +162,18 @@ page 50013 "List of Uploaded Payments"
                             grecCustLdgEntry.SetCurrentKey("Entry No.");
                             grecCustLdgEntry.SetRange("Customer No.", grecUploadedPayments."Student Code");
                             grecCustLdgEntry.SetRange(Amount, grecUploadedPayments.Amount);
-                            grecCustLdgEntry.SetRange("Document No.", grecUploadedPayments."Voucher No.");
+                            grecCustLdgEntry.SetRange("Document No.", grecUploadedPayments."Posted Invoice No.");
                             if grecCustLdgEntry.FindFirst() then begin
-                                grecCustLdgEntry."Applies-to ID" := gtextDocNo;
-                                grecCustLdgEntry."Amount to Apply" := grecUploadedPayments.Amount;
+                                grecCustLdgEntry.validate("Applies-to ID", gtextDocNo);
+                                grecCustLdgEntry.validate("Amount to Apply", grecUploadedPayments.Amount);
                                 grecCustLdgEntry.Modify(true);
                             end;
                             gintEntryNo += 10000;
                             gintCountEntry += 1;
+                            grecUploadedPayments."Updated to NAV" := true;
+                            grecUploadedPayments.Modify();
                         until grecUploadedPayments.Next() = 0;
-                        Message('%1 lines have been created on Cash Receipt Journal, batch %2.', gintCountEntry, grecSalesReceivableSetup."Upload Customer Payments");
+                        Message('%1 lines have been created on Template %2 , batch %3.', gintCountEntry, JournalTemplateName, JournalBatchName);
                         CurrPage.Update(true);
                     end;
                 end;
@@ -192,6 +195,7 @@ page 50013 "List of Uploaded Payments"
                 end;
             }
 
+            /*
             action("Cash Receipt Journal")
             {
                 ApplicationArea = All;
@@ -213,12 +217,23 @@ page 50013 "List of Uploaded Payments"
                     if grecGenJnlBatch.FindSet then begin
                         Page.Run(251, grecGenJnlBatch);
                     end;
-                end;
+                end;            
             }
+            */
         }
     }
+    procedure SetJournal(JnlTemplate: Code[10]; JnlBatch: Code[10])
+    var
+        myInt: Integer;
+    begin
+        JournalTemplateName := JnlTemplate;
+        JournalBatchName := JnlBatch;
+    end;
 
     var
         grecUploadedPayments: Record "List of Uploaded Payments";
         grecCustLdgEntry: Record "Cust. Ledger Entry";
+
+        JournalTemplateName: Code[10];
+        JournalBatchName: Code[10];
 }

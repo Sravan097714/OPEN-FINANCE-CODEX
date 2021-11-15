@@ -63,69 +63,49 @@
                                             <rd:DefaultName>Textbox79</rd:DefaultName>
                                             <Visibility>
                                               <Hidden>=Code.SetData(Cstr(Fields!CompanyArr1_CompanyArr2_CompanyArr3_CompanyArr4.Value)+ Chr(177) + 
-
 Cstr(Fields!CompanyArr5_CompanyArr6_CompanyArr7_CompanyArr8.Value)+Chr(177)+
-
 Cstr(Fields!CompanyArr9_CompanyArr10.Value)+Chr(177)+
-
 Cstr(Fields!Title_2_.Value)+Chr(177)+
-
 Cstr(Fields!Title_1_.Value)+Chr(177)+
-
 Cstr(Fields!YourRef.Value)+Chr(177)+  
-
 Cstr(Fields!ShortcutDimension1Code_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!ExternalDocumentNo_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!No_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!PostingDate_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!BilltoCustomerNo_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!CurrCode.Value)+Chr(177)+
-
 Cstr(Fields!PreAssignedNo_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_1_.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_2_.Value)+Chr(177)+
 Cstr(Fields!CustAddr_3_.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_4_.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_5_.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_6_.Value)+Chr(177)+
-
 Cstr(Fields!CustAddr_7_.Value)+Chr(177)+
-
 Cstr(Fields!VatDisplay.Value)+Chr(177)+
-
 Cstr(Fields!VATRegistrationNo_SalesCrMemoHeader.Value)+Chr(177)+
-
 Cstr(Fields!BRNText_1_.Value)+Chr(177)+
-
 Cstr(Fields!BRNText_2_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_1_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_2_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_3_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_4_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_5_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_6_.Value)+Chr(177)+
-
 Cstr(Fields!ShipToAddr_7_.Value) + Chr(177) + 
 Cstr(Fields!LineAmt.Value)+Chr(177)+
-
-
-Cstr(Fields!CompanyInfoAddr2_BankName.Value) + Chr(177) + Cstr(Fields!BilltoName_SalesCrMemoHeader.Value)+Chr(177)+Cstr(Fields!CompanyBRN.Value)+Chr(177)+Cstr(Fields!CompanyVATRegNo.Value)+Chr(177)+Cstr(Fields!CompanyPhoneNo.Value)+Chr(177)+Cstr(Fields!CompanyEmail2.Value)+Chr(177)+Cstr(Fields!PostalAddress.Value)+Chr(177)+Cstr(Fields!Our_Ref.Value)+Chr(177)+Cstr(Fields!Your_Ref.Value)+Chr(177)+Cstr(Fields!gtextBRN.Value)+Chr(177)+Cstr(Fields!gtextVATREGNo.Value),1)</Hidden>
+Cstr(Fields!CompanyInfoAddr2_BankName.Value) + Chr(177) + 
+Cstr(Fields!BilltoName_SalesCrMemoHeader.Value)+Chr(177)+
+Cstr(Fields!CompanyBRN.Value)+Chr(177)+
+Cstr(Fields!CompanyVATRegNo.Value)+Chr(177)+
+Cstr(Fields!CompanyPhoneNo.Value)+Chr(177)+
+Cstr(Fields!CompanyEmail2.Value)+Chr(177)+
+Cstr(Fields!PostalAddress.Value)+Chr(177)+
+Cstr(Fields!Our_Ref.Value)+Chr(177)+
+Cstr(Fields!Your_Ref.Value)+Chr(177)+
+Cstr(Fields!gtextBRN.Value)+Chr(177)+
+Cstr(Fields!gtextVATREGNo.Value)+Chr(177)+
+Cstr(Fields!Pre_Assigned_No_.Value),1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <Border />
@@ -1795,7 +1775,7 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!Quantity_SalesCrMemoLine.Value</Value>
+                                                    <Value>=Code.BlankZero(Fields!Quantity_SalesCrMemoLine.Value)</Value>
                                                     <Style />
                                                   </TextRun>
                                                 </TextRuns>
@@ -1827,7 +1807,7 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!UnitPrice_SalesCrMemoLine.Value</Value>
+                                                    <Value>=Code.BlankZero(Fields!UnitPrice_SalesCrMemoLine.Value)</Value>
                                                     <Style>
                                                       <Format>n2</Format>
                                                     </Style>
@@ -1861,7 +1841,7 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!AmountIncludingVAT_SalesCrMemoLine.Value</Value>
+                                                    <Value>=Code.BlankZero(Fields!AmountIncludingVAT_SalesCrMemoLine.Value)</Value>
                                                     <Style>
                                                       <Format>#,0.00;(#,0.00);''</Format>
                                                     </Style>
@@ -2630,9 +2610,9 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
               <Top>3.93702cm</Top>
-              <Left>12.36231cm</Left>
+              <Left>11.96544cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.5445cm</Width>
+              <Width>2.94138cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -3046,6 +3026,64 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox43">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value EvaluationMode="Constant">Credit Note No Before Posting.</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox11</rd:DefaultName>
+              <Top>4.36002cm</Top>
+              <Left>11.96544cm</Left>
+              <Height>0.95217cm</Height>
+              <Width>2.96189cm</Width>
+              <ZIndex>19</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox66">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Code.GetData(44,1)</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox11</rd:DefaultName>
+              <Top>4.36002cm</Top>
+              <Left>14.95489cm</Left>
+              <Height>0.423cm</Height>
+              <Width>4.53338cm</Width>
+              <ZIndex>20</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -3150,6 +3188,36 @@ Cstr(Fields!CompanyInfoAddr2_IBAN.Value),2)</Hidden>
                   <Style>None</Style>
                 </Border>
                 <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!User_ID.Value, "DataSet_Result")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>1.45657cm</Top>
+              <Left>13.59641cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.29917cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -3334,6 +3402,12 @@ End Function
         </Field>
         <Field Name="Your_Ref">
           <DataField>Your_Ref</DataField>
+        </Field>
+        <Field Name="Pre_Assigned_No_">
+          <DataField>Pre_Assigned_No_</DataField>
+        </Field>
+        <Field Name="User_ID">
+          <DataField>User_ID</DataField>
         </Field>
         <Field Name="CompanyInfo_Picture">
           <DataField>CompanyInfo_Picture</DataField>

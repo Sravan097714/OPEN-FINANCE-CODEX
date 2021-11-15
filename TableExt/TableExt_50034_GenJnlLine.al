@@ -128,6 +128,29 @@ tableextension 50034 GenJnlLine extends "Gen. Journal Line"
             ValidateTableRelation = false;
             //Enabled = payeeeditable;
         }
+        field(50035; "Amount Tendered"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            trigger OnValidate()
+            begin
+                if "Amount Tendered" < Amount then
+                    Error('Amount Tendered cannot be less than Amount') else
+                    "Amount to Remit" := "Amount Tendered" - Amount;
+            end;
+        }
+        field(50036; "Amount to Remit"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        /* modify(Amount)
+        {
+            trigger OnAfterValidate()
+            begin
+                if "Amount Tendered" < Amount then
+                    Error('Amount Tendered cannot be less than Amount') else
+                    "Amount to Remit" := "Amount Tendered" - Amount;
+            end;
+        } */
 
     }
 

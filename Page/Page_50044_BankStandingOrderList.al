@@ -4,6 +4,7 @@ page 50044 "Bank Standing Order List"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Bank Standing Orders";
+    SourceTableView = where(Archived = filter(false));
     CardPageId = "Bank Standing Order";
 
     layout
@@ -36,6 +37,35 @@ page 50044 "Bank Standing Order List"
                 field("To Month"; "To Month") { ApplicationArea = All; }
                 field("Name of Bank 2"; "Name of Bank 2") { ApplicationArea = All; }
                 field("Account to Credit"; "Account to Credit") { ApplicationArea = All; }
+                field(Archived; Archived) { ApplicationArea = all; }
+            }
+        }
+
+    }
+    actions
+    {
+        area(Processing)
+        {
+            action("Archive Bank Standing Order")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = BankContact;
+
+                trigger OnAction()
+                var
+                    Bankstandingorderrec: Record "Bank Standing Orders";
+                    ArchivedBankStandingOrderrec: Record "Archived Bank Standing Orders";
+                begin
+                    if NOT Confirm('Do you want to archive the Bank Standing Order %1', false, rec."Bank Standing Order No.", '?') then exit;
+                    ArchivedBankStandingOrderrec.Init();
+                    ArchivedBankStandingOrderrec.TransferFields(Rec);
+                    ArchivedBankStandingOrderrec.Insert();
+                    Rec.Archived := true;
+                    Rec.Modify();
+                end;
             }
         }
     }

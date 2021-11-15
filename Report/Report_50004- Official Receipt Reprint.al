@@ -347,7 +347,7 @@ report 50004 "Official Receipt Reprint"
         ltextCurrencyCode: Text;
         GLRegFilter: Text[250];
         CompanyInfo: Record 79;
-        CheckReport: Report 1401;
+        CheckReport: Report 50021;
 
         NumberText: array[2] of Text[60];
         CurCod: Code[10];
@@ -385,7 +385,7 @@ report 50004 "Official Receipt Reprint"
         DotText: Text[2];
         OutputNo: Integer;
         Text000: Label 'Access Denied!';
-        Text001: Label 'OFFICIAL RECEIPT';
+        Text001: Label 'ORIGINAL RECEIPT';
         Text002: Label 'COPY';
         Text003: Label 'Payment Receipt';
         Text004: Label 'Payment Voucher';

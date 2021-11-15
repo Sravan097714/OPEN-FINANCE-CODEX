@@ -68,7 +68,7 @@ report 50027 "Import List of Payment"
         EVALUATE(grecListofUploadedPayments."Posting Date", GetValueAtCell(RowNo, 1));
         EVALUATE(grecListofUploadedPayments."Student Code", GetValueAtCell(RowNo, 2));
         EVALUATE(grecListofUploadedPayments.Amount, GetValueAtCell(RowNo, 3));
-        EVALUATE(grecListofUploadedPayments."Voucher No.", GetValueAtCell(RowNo, 4));
+        EVALUATE(grecListofUploadedPayments."Posted Invoice No.", GetValueAtCell(RowNo, 4));
         grecListofUploadedPayments."Imported by" := UserId;
         grecListofUploadedPayments."Imported On" := Today;
         grecListofUploadedPayments.INSERT(TRUE);
