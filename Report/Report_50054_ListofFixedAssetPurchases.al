@@ -27,6 +27,8 @@ report 50054 "List of Fixed Asset Purchases"
             column(PONumber; grecPurchInvHdr."Order No.") { }
             column(Cost; Amount) { }
             column(Life; grecFADeprBook."No. of Depreciation Years") { }
+            column(FA_Supplier_No_; "FA Supplier No.") { }
+            column(VendorRec_Name; VendorRec.Name) { }
 
             trigger OnPreDataItem()
             begin
@@ -38,6 +40,8 @@ report 50054 "List of Fixed Asset Purchases"
                 if grecFixedAsset.Get("FA No.") then;
                 if grecPurchInvHdr.Get("Document No.") then;
                 if grecFADeprBook.Get("FA No.", "Depreciation Book Code") then;
+                if not VendorRec.Get("FA Supplier No.") then
+                    Clear(VendorRec.Name);
             end;
         }
     }
@@ -72,5 +76,6 @@ report 50054 "List of Fixed Asset Purchases"
         grecFixedAsset: Record "Fixed Asset";
         grecPurchInvHdr: Record "Purch. Inv. Header";
         grecFADeprBook: Record "FA Depreciation Book";
+        VendorRec: Record Vendor;
 
 }

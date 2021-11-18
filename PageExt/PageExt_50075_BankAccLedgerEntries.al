@@ -113,6 +113,8 @@ pageextension 50075 BankAccLedgerEntries extends "Bank Account Ledger Entries"
             field("Payment Journal No."; "Payment Journal No.") { ApplicationArea = All; }
             field(ReceiptPaymentRep; ReceiptPaymentRep) { ApplicationArea = All; }
             field("Vendor Category"; "Vendor Category") { ApplicationArea = All; }
+            field("Amount Tendered"; Rec."Amount Tendered") { ApplicationArea = all; }
+            field("Amount to Remit"; Rec."Amount to Remit") { ApplicationArea = all; }
         }
         addafter(Description)
         {
@@ -120,20 +122,6 @@ pageextension 50075 BankAccLedgerEntries extends "Bank Account Ledger Entries"
             {
                 ApplicationArea = all;
                 Editable = false;
-            }
-        }
-        addbefore(Amount)
-        {
-            field("Amount Tendered"; "Amount Tendered")
-            {
-                ApplicationArea = all;
-            }
-        }
-        addafter(Amount)
-        {
-            field("Amount to Remit"; "Amount to Remit")
-            {
-                ApplicationArea = all;
             }
         }
     }

@@ -59,9 +59,11 @@ page 50044 "Bank Standing Order List"
                     Bankstandingorderrec: Record "Bank Standing Orders";
                     ArchivedBankStandingOrderrec: Record "Archived Bank Standing Orders";
                 begin
-                    if NOT Confirm('Do you want to archive the Bank Standing Order %1', false, rec."Bank Standing Order No.", '?') then exit;
+                    if NOT Confirm('Do you want to archive the Bank Standing Order %1?', false, rec."Bank Standing Order No.", '?') then exit;
                     ArchivedBankStandingOrderrec.Init();
                     ArchivedBankStandingOrderrec.TransferFields(Rec);
+                    ArchivedBankStandingOrderrec."Archieved By" := UserId;
+                    ArchivedBankStandingOrderrec."Archieved DateTime" := CurrentDateTime;
                     ArchivedBankStandingOrderrec.Insert();
                     Rec.Archived := true;
                     Rec.Modify();

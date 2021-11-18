@@ -76,6 +76,23 @@ tableextension 50000 GLEntryExt extends "G/L Entry"
         {
             Caption = 'Payee Name';
         }
+        field(50035; "FA Supplier No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Supplier No.';
+            TableRelation = Vendor."No.";
+        }
+        field(50036; "Amount Tendered"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50037; "Amount To Remit"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+
+        }
     }
 
     trigger OnInsert()

@@ -23,6 +23,12 @@ report 50016 "Sales Invoice"
             column(SignatureName; grecSalesReceivableSetup."Sales Invoice Signature Name") { }
             column(gtextBRN; gtextBRN) { }
             column(gtextVATREGNo; gtextVATREGNo) { }
+            column(BankAccGRec_Name; BankAccGRec.Name) { }
+            column(BankAccGRec_Address; BankAccGRec.Address) { }
+            column(BankAccGRec_IBAN; BankAccGRec.IBAN) { }
+            column(BankAccGRec_SWIFTCode; BankAccGRec."SWIFT Code") { }
+            column(BankAccGRec_BankAccNo; BankAccGRec."Bank Account No.") { }
+            column(BankAccGRec_NameOftheAccount; BankAccGRec."Name Of the Account") { }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);
@@ -102,6 +108,9 @@ report 50016 "Sales Invoice"
                     column(OutputNo; OutputNo) { }
                     column(PurchaseOrderNo; "Sales Invoice Header"."External Document No.") { }
                     column(SalesInvoiceOrderNo; "Sales Invoice Header"."Order No.") { }
+                    column(ContactName_SellToContact; "Sales Invoice Header"."Sell-to Contact") { }
+                    column(ContactTitle_SellToContact; "Sales Invoice Header"."Contact Title") { }
+                    column(PreAssignedNo; "Sales Invoice Header"."Pre-Assigned No.") { }
                     dataitem(DimensionLoop1; Integer)
                     {
                         DataItemLinkReference = "Sales Invoice Header";
@@ -548,6 +557,8 @@ report 50016 "Sales Invoice"
 
 
                 grecSalesReceivableSetup.get;
+                if not BankAccGRec.Get("Bank Code") then
+                    Clear(BankAccGRec);
             end;
         }
     }
@@ -720,6 +731,8 @@ report 50016 "Sales Invoice"
         CustomerName: Text;
         CustomerVAT: Text;
         gtextItemCode2: Text;
+        BankAccGRec: Record "Bank Account";
+
 
     //ARPayTerms: Record 50031;
 

@@ -60,11 +60,19 @@ page 50013 "List of Uploaded Payments"
                 var
                     grecCustomer: Record Customer;
                     gintNumValidated: Integer;
+                    RecCount: Integer;
                 begin
                     Clear(gintNumValidated);
                     grecUploadedPayments.Reset();
                     grecUploadedPayments.SetCurrentKey("Entry No.");
                     grecUploadedPayments.SetRange("Entry No.");
+                    grecUploadedPayments.SetRange("Updated to NAV", false);
+                    RecCount := grecUploadedPayments.Count;
+
+                    grecUploadedPayments.Reset();
+                    grecUploadedPayments.SetCurrentKey("Entry No.");
+                    grecUploadedPayments.SetRange("Entry No.");
+                    grecUploadedPayments.SetRange("Updated to NAV", false);
                     grecUploadedPayments.SetRange(Validated, false);
                     if grecUploadedPayments.FindFirst() then begin
                         repeat
@@ -96,7 +104,7 @@ page 50013 "List of Uploaded Payments"
 
                             grecUploadedPayments.Modify();
                         until grecUploadedPayments.Next() = 0;
-                        Message('%1 out of %2 lines have been validated.', gintNumValidated, grecUploadedPayments.Count);
+                        Message('%1 out of %2 lines have been validated.', gintNumValidated, RecCount);
                     end;
                 end;
             }
@@ -119,6 +127,7 @@ page 50013 "List of Uploaded Payments"
                     gintEntryNo: Integer;
                     gintCountEntry: Integer;
                     grecGenJnlBatch: Record "Gen. Journal Batch";
+                    Noseriesmgt: Codeunit NoSeriesManagement;
                 begin
 
                     clear(gintCountEntry);
@@ -132,6 +141,8 @@ page 50013 "List of Uploaded Payments"
 
                     grecSalesReceivableSetup.Get();
 
+                    if not grecGenJnlBatch.Get(JournalTemplateName, JournalBatchName) then
+                        Clear(grecGenJnlBatch);
                     grecUploadedPayments.Reset();
                     grecUploadedPayments.SetCurrentKey("Entry No.");
                     grecUploadedPayments.SetRange(Validated, true);
@@ -140,21 +151,19 @@ page 50013 "List of Uploaded Payments"
                         repeat
                             clear(gtextDocNo);
                             grecGenJnlLine.Init();
-                            grecGenJnlLine.validate("Line No.", gintEntryNo);
                             grecGenJnlLine.validate("Journal Template Name", JournalTemplateName);
                             grecGenJnlLine.validate("Journal Batch Name", JournalBatchName);
+                            Clear(NoSeriesMgt);
+                            grecGenJnlLine."Document No." := NoSeriesMgt.TryGetNextNo(grecGenJnlBatch."No. Series", WorkDate());
+                            grecGenJnlLine.Validate("Document No.");
+                            grecGenJnlLine.validate("Line No.", gintEntryNo);
                             grecGenJnlLine.validate("Account Type", grecGenJnlLine."Account Type"::Customer);
                             grecGenJnlLine.validate("Account No.", grecUploadedPayments."Student Code");
                             grecGenJnlLine.validate("Posting Date", grecUploadedPayments."Posting Date");
                             grecGenJnlLine.validate("Document Type", grecGenJnlLine."Document Type"::Payment);
-                            grecGenJnlLine.validate("Document No.", grecUploadedPayments."Posted Invoice No.");
                             grecGenJnlLine.validate(Amount, grecUploadedPayments.Amount * -1);
-
-                            if grecGenJnlBatch.Get(JournalTemplateName, JournalBatchName) then begin
-                                grecGenJnlLine."Bal. Account Type" := grecGenJnlBatch."Bal. Account Type";
-                                grecGenJnlLine."Bal. Account No." := grecGenJnlBatch."Bal. Account No.";
-                            end;
-
+                            grecGenJnlLine.validate("Bal. Account Type", grecGenJnlBatch."Bal. Account Type");
+                            grecGenJnlLine.validate("Bal. Account No.", grecGenJnlBatch."Bal. Account No.");
                             gtextDocNo := grecGenJnlLine."Document No.";
                             grecGenJnlLine.Insert(true);
 
@@ -168,6 +177,9 @@ page 50013 "List of Uploaded Payments"
                                 grecCustLdgEntry.validate("Amount to Apply", grecUploadedPayments.Amount);
                                 grecCustLdgEntry.Modify(true);
                             end;
+                            grecGenJnlLine.validate("Posting Group", grecCustLdgEntry."Customer Posting Group");
+                            grecGenJnlLine.Modify();
+
                             gintEntryNo += 10000;
                             gintCountEntry += 1;
                             grecUploadedPayments."Updated to NAV" := true;

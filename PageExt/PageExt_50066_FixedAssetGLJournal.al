@@ -121,6 +121,10 @@ pageextension 50066 FixedAssetGLJournal extends "Fixed Asset G/L Journal"
                 ApplicationArea = All;
                 Editable = false;
             }
+            field("FA Supplier No."; Rec."FA Supplier No.")
+            {
+                ApplicationArea = all;
+            }
         }
 
         addafter(Description)

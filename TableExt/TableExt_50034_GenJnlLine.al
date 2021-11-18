@@ -134,23 +134,32 @@ tableextension 50034 GenJnlLine extends "Gen. Journal Line"
             trigger OnValidate()
             begin
                 if "Amount Tendered" < Amount then
-                    Error('Amount Tendered cannot be less than Amount') else
-                    "Amount to Remit" := "Amount Tendered" - Amount;
+                    Error('Amount Tendered cannot be less than Amount');
+                "Amount to Remit" := "Amount Tendered" - Amount;
             end;
         }
-        field(50036; "Amount to Remit"; Decimal)
+        field(50036; "Amount To Remit"; Decimal)
         {
             DataClassification = ToBeClassified;
+            Editable = false;
+
         }
-        /* modify(Amount)
+        field(50037; "FA Supplier No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Supplier No.';
+            TableRelation = Vendor."No.";
+        }
+        modify(Amount)
         {
             trigger OnAfterValidate()
             begin
-                if "Amount Tendered" < Amount then
-                    Error('Amount Tendered cannot be less than Amount') else
-                    "Amount to Remit" := "Amount Tendered" - Amount;
+                if xRec.Amount <> Rec.Amount then begin
+                    Clear("Amount Tendered");
+                    Clear("Amount To Remit");
+                end;
             end;
-        } */
+        }
 
     }
 

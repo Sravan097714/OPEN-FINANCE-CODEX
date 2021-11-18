@@ -560,14 +560,14 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox39">
+                                          <Textbox Name="Textbox55">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>TOTAL APPLIED</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -577,7 +577,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox39</rd:DefaultName>
+                                            <rd:DefaultName>Textbox55</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -628,16 +628,17 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox50">
+                                          <Textbox Name="AppliedAmt_">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Sum(Fields!Amount_DCLE.Value)</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>#,0.00</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -646,7 +647,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox50</rd:DefaultName>
+                                            <rd:DefaultName>AppliedAmt_</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -677,7 +678,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>UNAPPLIED AMOUNT</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -742,16 +743,17 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox55">
+                                          <Textbox Name="UnAppliedAmt_">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Sum(Fields!UnAppliedAmt.Value)</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>#,0.00</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -760,7 +762,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox55</rd:DefaultName>
+                                            <rd:DefaultName>UnAppliedAmt_</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -784,39 +786,6 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox24">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value />
-                                                    <Style>
-                                                      <FontSize>9pt</FontSize>
-                                                      <FontWeight>Bold</FontWeight>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox24</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>None</Style>
-                                              </Border>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
                                           <Textbox Name="Textbox31">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -824,14 +793,16 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>TOTAL</Value>
+                                                    <Value>TOTAL RECEIPT AMOUNT</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
-                                                <Style />
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox31</rd:DefaultName>
@@ -847,8 +818,10 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
+                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
+                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Textbox33">
@@ -937,8 +910,16 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                               <TablixRowHierarchy>
                                 <TablixMembers>
                                   <TablixMember />
-                                  <TablixMember />
-                                  <TablixMember />
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Sum(Fields!Amount_DCLE.Value)=0,true,false)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Sum(Fields!UnAppliedAmt.Value)=0,true,false)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
                                   <TablixMember />
                                 </TablixMembers>
                               </TablixRowHierarchy>
@@ -2308,14 +2289,14 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox34">
+                                          <Textbox Name="Textbox51">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>APPLIED :</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2325,7 +2306,7 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox34</rd:DefaultName>
+                                            <rd:DefaultName>Textbox39</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -2731,6 +2712,9 @@ Cstr(Fields!CompArr10_.Value) + Chr(177) + Cstr(Fields!Title1_.Value) + Chr(177)
                                     <KeepWithGroup>After</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Fields!DocNo_CLE.Value="",true,false)</Hidden>
+                                    </Visibility>
                                     <KeepWithGroup>After</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>

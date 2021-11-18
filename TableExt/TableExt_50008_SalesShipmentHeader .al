@@ -24,5 +24,14 @@ tableextension 50008 SalesShipHeader extends "Sales Shipment Header"
             DataClassification = ToBeClassified;
             Editable = false;
         }
+        field(50028; "Contact Title"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50029; "Bank Code"; code[50])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Bank Account";
+        }
     }
 }

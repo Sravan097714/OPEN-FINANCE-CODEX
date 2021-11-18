@@ -4,6 +4,9 @@ page 50065 "Archived Bank Standing Order"
     //ApplicationArea = All;
     //UsageCategory = Tasks;
     SourceTable = "Archived Bank Standing Orders";
+    Editable = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
 
     layout
     {

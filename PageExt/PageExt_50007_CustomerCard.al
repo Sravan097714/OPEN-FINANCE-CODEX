@@ -303,6 +303,10 @@ pageextension 50007 CustomerExt extends "Customer Card"
         {
             Caption = 'Contact Email';
         }
+        addbefore(ContactName)
+        {
+            field("Contact Title"; Rec."Contact Title") { ApplicationArea = all; }
+        }
     }
 
     trigger OnOpenPage()

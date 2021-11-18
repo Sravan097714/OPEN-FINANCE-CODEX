@@ -1064,9 +1064,6 @@
                       <Group Name="Details" />
                     </TablixMember>
                     <TablixMember>
-                      <Visibility>
-                        <Hidden>true</Hidden>
-                      </Visibility>
                       <KeepWithGroup>Before</KeepWithGroup>
                     </TablixMember>
                   </TablixMembers>
@@ -1490,7 +1487,7 @@
         <Height>8.47286cm</Height>
         <Style />
       </Body>
-      <Width>28.34982cm</Width>
+      <Width>28.34983cm</Width>
       <Page>
         <PageHeader>
           <Height>4.96605cm</Height>

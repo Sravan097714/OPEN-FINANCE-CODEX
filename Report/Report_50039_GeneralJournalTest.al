@@ -45,7 +45,7 @@ report 50039 "List Trans. prior cheque print"
                 {
                     DataItemLink = "Journal Template Name" = FIELD("Journal Template Name"), "Journal Batch Name" = FIELD(Name);
                     DataItemLinkReference = "Gen. Journal Batch";
-                    DataItemTableView = SORTING("Journal Template Name", "Journal Batch Name", "Line No.");
+                    DataItemTableView = SORTING("Document No.");
                     RequestFilterFields = "Posting Date";
                     column(PostingDate_GenJnlLine; Format("Posting Date")) { }
                     column(DocType_GenJnlLine; "Document Type") { }

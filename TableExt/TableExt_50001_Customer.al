@@ -36,6 +36,7 @@ tableextension 50001 CustExt extends Customer
             //Caption = 'Contact Email';
         }
         field(50009; "Login Email"; Text[80]) { }
+        field(50010; "Contact Title"; Text[50]) { }
     }
 
     trigger OnInsert()

@@ -21,6 +21,13 @@ report 50069 "Sales Test Report"
             column(Your_Ref; "Your Ref") { }
             column(VatDisplay; VatDisplay) { }
             column(SignatureName; grecSalesReceivableSetup."Sales Invoice Signature Name") { }
+            column(HeaderTxt; HeaderTxt) { }
+            column(BankAccGRec_Name; BankAccGRec.Name) { }
+            column(BankAccGRec_Address; BankAccGRec.Address) { }
+            column(BankAccGRec_IBAN; BankAccGRec.IBAN) { }
+            column(BankAccGRec_SWIFTCode; BankAccGRec."SWIFT Code") { }
+            column(BankAccGRec_BankAccNo; BankAccGRec."Bank Account No.") { }
+            column(BankAccGRec_NameOftheAccount; BankAccGRec."Name Of the Account") { }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);
@@ -100,6 +107,8 @@ report 50069 "Sales Test Report"
                     column(OutputNo; OutputNo) { }
                     column(PurchaseOrderNo; "Sales Header"."External Document No.") { }
                     column(SalesInvoiceOrderNo; "Sales Header"."No.") { }
+                    column(ContactName_SellToContact; "Sales Header"."Sell-to Contact") { }
+                    column(ContactTitle_SellToContact; "Sales Header"."Contact Title") { }
                     dataitem(DimensionLoop1; Integer)
                     {
                         DataItemLinkReference = "Sales Header";
@@ -140,7 +149,29 @@ report 50069 "Sales Test Report"
                                 CurrReport.BREAK();
                         end;
                     }
+                    dataitem("Dimension Set Entry"; "Dimension Set Entry")
+                    {
+                        DataItemTableView = SORTING("Dimension Set ID", "Dimension Code") ORDER(Ascending);
+                        DataItemLink = "Dimension Set ID" = FIELD("Dimension Set ID");
+                        DataItemLinkReference = "Sales Header";
+                        CalcFields = "Dimension Value Name";
+                        column(Dimension_Code; "Dimension Code") { }
+                        column(Dimension_Value_Code; "Dimension Value Code") { }
+                        column(Dimension_Value_Name; "Dimension Value Name") { }
+                        column(DimensionName2; DimensionName2) { }
+                        trigger OnAfterGetRecord()
+                        var
+                            DimensionValueLRec: Record "Dimension Value";
+                        begin
+                            If not DimensionValueLRec.Get("Dimension Code", "Dimension Value Code") then
+                                Clear(DimensionName2);
 
+                            if DimensionValueLRec."Name 2" <> '' then
+                                DimensionName2 := DimensionValueLRec."Name 2"
+                            else
+                                DimensionName2 := DimensionValueLRec.Name;
+                        end;
+                    }
                     dataitem("Sales Line"; "Sales Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
@@ -597,6 +628,12 @@ report 50069 "Sales Test Report"
 
 
                 grecSalesReceivableSetup.get;
+                if "Sales Header"."Document Type" = "Sales Header"."Document Type"::Invoice then
+                    HeaderTxt := 'TEST INVOICE'
+                else
+                    HeaderTxt := 'TEST CREDIT INVOICE';
+                if not BankAccGRec.Get("Bank Code") then
+                    Clear(BankAccGRec);
             end;
 
 
@@ -650,6 +687,7 @@ report 50069 "Sales Test Report"
     var
         GLEntryFromPreviewPosting: Record "G/L Entry" temporary;
         GLEntryFromPreviewPosting2: Record "G/L Entry" temporary;
+        BankAccGRec: Record "Bank Account";
         PreviewPostingCU: Codeunit PreviewPosting;
         DrCrText: Text;
         GlAccDesc: Text;
@@ -764,6 +802,7 @@ report 50069 "Sales Test Report"
         All_legal_fees_CaptionLbl: Label 'All legal fees will be charged to the customer for recovery through an Attorney / Solicitor';
         OutputNo: Integer;
         Dot_CaptionLbl: Label '................................................................';
+        HeaderTxt: Text;
         Colun_CaptionLbl: Label ':';
         DimSetEntry1: Record 480;
         DimSetEntry2: Record 480;
@@ -774,6 +813,7 @@ report 50069 "Sales Test Report"
         CustomerName: Text;
         CustomerVAT: Text;
         gtextItemCode2: Text;
+        DimensionName2: Text;
 
     //ARPayTerms: Record 50031;
 

@@ -132,6 +132,31 @@ report 50040 "Statement of GL Accounts"
                     {
                     }
                     column(gtextName; gtextName) { }
+                    column(TotalDebitAmount; TotalDebitAmount) { }
+                    column(TotalcreditAmount; TotalcreditAmount) { }
+                    dataitem("Dimension Set Entry"; "Dimension Set Entry")
+                    {
+                        DataItemTableView = SORTING("Dimension Set ID", "Dimension Code") ORDER(Ascending);
+                        DataItemLink = "Dimension Set ID" = FIELD("Dimension Set ID");
+                        DataItemLinkReference = "G/L Entry";
+                        CalcFields = "Dimension Value Name";
+                        column(Dimension_Code; "Dimension Code") { }
+                        column(Dimension_Value_Code; "Dimension Value Code") { }
+                        column(Dimension_Value_Name; "Dimension Value Name") { }
+                        column(DimensionName2; DimensionName2) { }
+                        trigger OnAfterGetRecord()
+                        var
+                            DimensionValueLRec: Record "Dimension Value";
+                        begin
+                            If not DimensionValueLRec.Get("Dimension Code", "Dimension Value Code") then
+                                Clear(DimensionName2);
+
+                            if DimensionValueLRec."Name 2" <> '' then
+                                DimensionName2 := DimensionValueLRec."Name 2"
+                            else
+                                DimensionName2 := DimensionValueLRec.Name;
+                        end;
+                    }
 
                     trigger OnAfterGetRecord()
                     begin
@@ -172,10 +197,14 @@ report 50040 "Statement of GL Accounts"
                             if grecFixedAsset.get("Source No.") then
                                 gtextName := grecFixedAsset.Description;
                         end;
+                        TotalDebitAmount += "Debit Amount";
+                        TotalcreditAmount += "Credit Amount";
                     end;
 
                     trigger OnPreDataItem()
                     begin
+                        Clear(TotalcreditAmount);
+                        Clear(TotalDebitAmount);
                         GLBalance := StartBalance;
 
                         OnAfterOnPreDataItemGLEntry("G/L Entry");
@@ -316,6 +345,9 @@ report 50040 "Statement of GL Accounts"
         grecCustomer: Record Customer;
         grecBankAccountNo: Record "Bank Account";
         grecFixedAsset: Record "Fixed Asset";
+        DimensionName2: Text;
+        TotalDebitAmount: Decimal;
+        TotalcreditAmount: Decimal;
 
     procedure InitializeRequest(NewPrintOnlyOnePerPage: Boolean; NewExcludeBalanceOnly: Boolean; NewPrintClosingEntries: Boolean; NewPrintReversedEntries: Boolean; NewPrintOnlyCorrections: Boolean)
     begin

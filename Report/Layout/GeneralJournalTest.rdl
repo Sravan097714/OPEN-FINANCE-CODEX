@@ -571,7 +571,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -4505,11 +4504,6 @@
                                                 <GroupExpression>=Fields!AccountNo_GenJnlLine.Value</GroupExpression>
                                               </GroupExpressions>
                                             </Group>
-                                            <SortExpressions>
-                                              <SortExpression>
-                                                <Value>=Fields!AccountNo_GenJnlLine.Value</Value>
-                                              </SortExpression>
-                                            </SortExpressions>
                                             <TablixMembers>
                                               <TablixMember>
                                                 <Group Name="Table1_Details_Group">

@@ -114,11 +114,11 @@ report 50096 "Purchase Register Consolidated"
                         lrecVendorLedgerEntry.SetRange("Entry No.", lrecDetVendLedgerEntry2."Applied Vend. Ledger Entry No.");
                         if lrecVendorLedgerEntry.FindFirst() then begin
                             ExcelBuf.AddColumn(lrecVendorLedgerEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
-                            ExcelBuf.AddColumn(lrecDetVendLedgerEntry2.Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
+                            ExcelBuf.AddColumn('', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
                             ExcelBuf.AddColumn(lrecVendorLedgerEntry."PV Number", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
                         end else begin
                             ExcelBuf.AddColumn('', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
-                            ExcelBuf.AddColumn(lrecDetVendLedgerEntry2.Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
+                            ExcelBuf.AddColumn('', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
                             ExcelBuf.AddColumn('', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuf."Cell Type"::Text);
                         end;
                     end else begin
@@ -146,7 +146,7 @@ report 50096 "Purchase Register Consolidated"
 
         dataitem("Purchase Header Archive"; "Purchase Header Archive")
         {
-            DataItemTableView = sorting("No.");
+            DataItemTableView = sorting("No.") where("Cancelled By" = filter(<> ''));
             RequestFilterFields = "Document Type", "No.";
             trigger OnPreDataItem()
             begin

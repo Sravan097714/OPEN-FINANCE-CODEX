@@ -113,7 +113,7 @@ pageextension 50079 GeneralLedgerEntries extends "General Ledger Entries"
             field("Vendor Category"; "Vendor Category") { ApplicationArea = All; }
             field("From OU Portal"; "From OU Portal") { ApplicationArea = All; }
             field("FA Revaluation"; "FA Revaluation") { ApplicationArea = All; }
-
+            field("FA Supplier No."; "FA Supplier No.") { ApplicationArea = all; }
             field("Account Category"; "Account Category") { ApplicationArea = All; }
         }
 

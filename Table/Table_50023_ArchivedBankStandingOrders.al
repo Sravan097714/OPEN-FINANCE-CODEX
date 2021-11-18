@@ -113,7 +113,14 @@ table 50023 "Archived Bank Standing Orders"
         {
             DataClassification = ToBeClassified;
         }
-
+        field(50; "Archieved By"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(51; "Archieved DateTime"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 

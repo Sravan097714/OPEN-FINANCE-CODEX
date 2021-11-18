@@ -184,7 +184,12 @@ report 50024 "Goods and Services"
                                                 //VarAmtExclVAT := ROUND(PurchInvHdr.Amount, 1, '=');
 
                                                 //VarVATAmt := ROUND(PurchInvHdr."Amount Including VAT" - PurchInvHdr.Amount, 1, '=');
-                                                VarDesc := DELCHR(PurchInvHdr."Posting Description");
+                                                PurchInvLine.Reset();
+                                                PurchInvLine.SetRange("Document No.", VLE."Document No.");
+                                                PurchInvLine.SetFilter(Type, '<>%1', PurchInvLine.Type::" ");
+                                                if PurchInvLine.FindSet() then
+                                                    VarDesc := DELCHR(PurchInvLine."Description 2");
+                                                //VarDesc := DELCHR(PurchInvHdr."Posting Description");
                                                 //VarDesc := PurchInvHdr."Posting Description";
                                                 IF PurchInvHdr."Currency Code" <> '' THEN BEGIN
                                                     //VarAmtExclVAT := PurchInvHdr.Amount;
@@ -207,7 +212,12 @@ report 50024 "Goods and Services"
                                                 PurchCrMemoHdr.CALCFIELDS(PurchCrMemoHdr.Amount, PurchCrMemoHdr."Amount Including VAT");
                                                 VarAmtExclVAT := ROUND(PurchCrMemoHdr.Amount, 1, '=') * -1;
                                                 VarVATAmt := ROUND(PurchCrMemoHdr."Amount Including VAT" - PurchCrMemoHdr.Amount, 1, '=') * -1;
-                                                VarDesc := DELCHR(PurchCrMemoHdr."Posting Description");
+                                                PurchCrMemoLine.Reset();
+                                                PurchCrMemoLine.SetRange("Document No.", VLE."Document No.");
+                                                PurchCrMemoLine.SetFilter(Type, '<>%1', PurchCrMemoLine.Type::" ");
+                                                if PurchCrMemoLine.FindSet() then
+                                                    VarDesc := DELCHR(PurchCrMemoLine."Description 2");
+                                                //VarDesc := DELCHR(PurchCrMemoHdr."Posting Description");
                                                 IF PurchCrMemoHdr."Currency Code" <> '' THEN BEGIN
                                                     VarAmtExclVAT := (PurchCrMemoHdr.Amount) * -1;
                                                     VarVATAmt := (PurchCrMemoHdr."Amount Including VAT" - PurchCrMemoHdr.Amount) * -1;

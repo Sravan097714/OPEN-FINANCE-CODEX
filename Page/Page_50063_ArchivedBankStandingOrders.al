@@ -5,9 +5,9 @@ page 50063 "Archived Bank Standing Orders"
     UsageCategory = Lists;
     SourceTable = "Archived Bank Standing Orders";
     CardPageId = "Archived Bank Standing Order";
-    /* Editable = false;
+    Editable = false;
     InsertAllowed = false;
-    DeleteAllowed = false; */
+    DeleteAllowed = false;
 
     layout
     {
@@ -40,6 +40,8 @@ page 50063 "Archived Bank Standing Orders"
                 field("Name of Bank 2"; "Name of Bank 2") { ApplicationArea = All; }
                 field("Account to Credit"; "Account to Credit") { ApplicationArea = All; }
                 field(Archived; Archived) { ApplicationArea = all; }
+                field("Archieved By"; Rec."Archieved By") { ApplicationArea = all; }
+                field("Archieved DateTime"; Rec."Archieved DateTime") { ApplicationArea = all; }
             }
         }
 

@@ -126,6 +126,7 @@ codeunit 50000 Miscellaneous
     begin
         GLEntry."Requested By" := GenJournalLine."Requested By";
         GLEntry."Original PO Number" := GenJournalLine."Original PO Number";
+        GLEntry."FA Supplier No." := GenJournalLine."FA Supplier No.";
     end;
 
 
@@ -134,6 +135,7 @@ codeunit 50000 Miscellaneous
     begin
         FALedgerEntry."Created By" := GenJournalLine."Created By";
         FALedgerEntry."Description 2" := GenJournalLine."Description 2";
+        FALedgerEntry."FA Supplier No." := GenJournalLine."FA Supplier No.";
     end;
 
 
@@ -458,6 +460,29 @@ codeunit 50000 Miscellaneous
     begin
         if PurchaseHeader."Buy-from Vendor No." <> '' then
             FromPurchHeaderArchive.SetRange("Buy-from Vendor No.", PurchaseHeader."Buy-from Vendor No.");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterUpdateSellToCont', '', true, true)]
+    local procedure "Sales Header_OnAfterUpdateSellToCont"
+    (
+        var SalesHeader: Record "Sales Header";
+        Customer: Record "Customer";
+        Contact: Record "Contact";
+        HideValidationDialog: Boolean
+    )
+    begin
+        SalesHeader."Contact Title" := Customer."Contact Title";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Bank Account Ledger Entry", 'OnAfterCopyFromGenJnlLine', '', true, true)]
+    local procedure "Bank Account Ledger Entry_OnAfterCopyFromGenJnlLine"
+    (
+        var BankAccountLedgerEntry: Record "Bank Account Ledger Entry";
+        GenJournalLine: Record "Gen. Journal Line"
+    )
+    begin
+        BankAccountLedgerEntry."Amount Tendered" := GenJournalLine."Amount Tendered";
+        BankAccountLedgerEntry."Amount to Remit" := GenJournalLine."Amount To Remit"
     end;
 
 

@@ -84,6 +84,7 @@ pageextension 50015 BankAccountCard extends "Bank Account Card"
         addlast(General)
         {
             field("Receipts Only"; "Receipts Only") { ApplicationArea = All; }
+            field("Name Of the Account"; Rec."Name Of the Account") { ApplicationArea = all; }
         }
     }
 }

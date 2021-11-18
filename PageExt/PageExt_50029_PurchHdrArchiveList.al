@@ -81,4 +81,10 @@ pageextension 50029 PurchHdrArchiveListExt extends "Purchase Order Archives"
         }
 
     }
+    trigger OnOpenPage()
+    begin
+        Rec.FilterGroup(2);
+        Rec.SetFilter("Cancelled By", '<>%1', '');
+        Rec.FilterGroup(0)
+    end;
 }

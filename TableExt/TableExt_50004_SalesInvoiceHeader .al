@@ -68,5 +68,14 @@ tableextension 50004 SalesInvoiceHeaderExt extends "Sales Invoice Header"
             DataClassification = ToBeClassified;
             Editable = false;
         }
+        field(50028; "Contact Title"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50029; "Bank Code"; code[50])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Bank Account";
+        }
     }
 }
